@@ -1,7 +1,7 @@
 ---
 name: vinculum
 description: Shared consciousness between Clawdbot instances. Links multiple bots into a collective, sharing memories, activities, and decisions in real-time over local network using Gun.js P2P sync.
-version: 1.0.0
+version: 1.1.0
 author: Koba42 Corp
 license: MIT
 homepage: https://github.com/koba42/clawdbot-vinculum

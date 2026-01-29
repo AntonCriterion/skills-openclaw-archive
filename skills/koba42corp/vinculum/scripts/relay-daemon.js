@@ -83,7 +83,7 @@ class RelayDaemon {
       }
     }
 
-    // Create HTTP server for WebSocket relay
+    // Create HTTP server (simple, like TangTalk)
     this.server = http.createServer((req, res) => {
       // Health check endpoint
       if (req.url === '/health' || req.url === '/status') {
@@ -97,22 +97,17 @@ class RelayDaemon {
         return;
       }
       
-      // Gun handles WebSocket upgrades
       res.writeHead(200);
-      res.end('Gun Relay Server');
+      res.end('Vinculum Relay');
     });
 
-    // Initialize Gun with relay settings
+    // Initialize Gun with server attached (exactly like TangTalk)
     this.gun = Gun({
       web: this.server,
       file: path.join(this.dataDir, 'relay-data'),
       radisk: true,
       localStorage: false,
-      axe: true,  // Enable AXE for peer discovery
-      multicast: {
-        addr: this.multicast,
-        port: this.port
-      }
+      multicast: false
     });
 
     // Track connections

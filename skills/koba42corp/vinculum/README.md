@@ -6,6 +6,14 @@
 
 Link multiple Clawdbot instances into a collective using [Gun.js](https://gun.eco) P2P sync.
 
+## Installation
+
+```bash
+# From ClawdHub
+clawdhub install vinculum
+cd skills/vinculum && npm install
+```
+
 ## Features
 
 - 🔗 **Real-time link** — Changes propagate instantly between drones
@@ -16,43 +24,39 @@ Link multiple Clawdbot instances into a collective using [Gun.js](https://gun.ec
 
 ## Quick Start
 
-```bash
-# Install dependencies
-npm install
+### First Bot (Creates Collective)
+```
+/link relay start
+/link init
+```
+Share the pairing code with other bots.
 
-# Start the Vinculum relay
-npm run relay:start
-
-# Check status
-npm run cli -- status
+### Additional Bots (Join Collective)
+```
+/link relay peer http://<first-bot-ip>:8765/gun
+/link join <pairing-code>
 ```
 
-## CLI Usage
-
-```bash
-# Via npm scripts
-npm run cli -- status
-npm run cli -- relay start
-npm run cli -- share "Hello collective!"
-
-# Or directly
-node scripts/cli.js status
-node scripts/cli.js relay start
+### Verify Connection
+```
+/link status
+/link drones
 ```
 
 ## Commands
 
 | Command | Description |
 |---------|-------------|
-| `relay start` | Start Vinculum relay |
-| `relay stop` | Stop relay |
-| `relay status` | Check relay health |
-| `init` | Create new collective |
-| `join <code>` | Join existing collective |
-| `status` | Show link status |
-| `drones` | List connected drones |
-| `share "text"` | Share a thought |
-| `config` | View/set configuration |
+| `/link relay start` | Start Vinculum relay |
+| `/link relay stop` | Stop relay |
+| `/link relay peer <url>` | Add remote peer |
+| `/link init` | Create new collective |
+| `/link join <code>` | Join existing collective |
+| `/link status` | Show link status |
+| `/link drones` | List connected drones |
+| `/link share "text"` | Share a thought |
+| `/link on` / `/link off` | Enable/disable sync |
+| `/link config` | View/set configuration |
 
 See `SKILL.md` for full documentation.
 
@@ -61,14 +65,23 @@ See `SKILL.md` for full documentation.
 ```
 ┌─────────────┐     ┌─────────────┐
 │   Drone A   │     │   Drone B   │
+│  (Legion)   │     │  (Seven)    │
 └──────┬──────┘     └──────┬──────┘
        │   Subspace Link   │
        ▼                   ▼
   ┌────────────────────────────┐
   │      Vinculum Relay        │
-  │    ws://localhost:8765     │
+  │   (Collective Processor)   │
   └────────────────────────────┘
 ```
+
+## Multi-Machine Setup
+
+| Machine 1 (Runs Relay) | Machine 2+ |
+|------------------------|------------|
+| `/link relay start` | `/link relay peer http://<ip>:8765/gun` |
+| `/link init` → get code | `/link join <code>` |
+| `/link drones` | `/link drones` |
 
 ## Files
 
@@ -84,15 +97,17 @@ vinculum/
 │   └── utils/           # Helpers
 ├── config/
 │   └── defaults.yaml    # Default configuration
-├── tests/
-│   └── *.js             # Test suite
 ├── SKILL.md             # Clawdbot skill docs
 └── README.md            # This file
 ```
 
+## Version
+
+1.1.0
+
 ## License
 
-MIT
+MIT — Koba42 Corp
 
 ---
 

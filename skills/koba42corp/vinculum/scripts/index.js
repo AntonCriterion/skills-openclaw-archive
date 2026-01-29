@@ -106,26 +106,16 @@ class Vinculum {
       fs.mkdirSync(dataDir, { recursive: true });
     }
     
-    // Auto-start relay if configured
-    if (config.relay?.auto_start) {
-      await this._ensureRelayRunning(config);
-    }
-    
-    // Build peer list (include local relay if running)
+    // Build peer list - connect to relay(s)
     const peers = [...(config.peers || [])];
-    const relayPort = config.relay?.port || 8765;
-    const localRelay = `http://localhost:${relayPort}/gun`;
-    if (!peers.includes(localRelay) && this._isRelayRunning()) {
-      peers.unshift(localRelay);
-    }
     
-    // Initialize adapter
+    // Initialize adapter (client mode - pure in-memory, connects to relay)
     await this.adapter.init({
       peers,
-      file: path.join(dataDir, 'collective-data'),
       localStorage: false,
-      radisk: true,
-      axe: true  // Enable local network discovery
+      radisk: false,
+      axe: false,
+      multicast: false
     });
     
     // Auto-connect if configured

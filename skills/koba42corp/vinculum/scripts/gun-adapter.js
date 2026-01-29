@@ -27,14 +27,15 @@ class GunAdapter {
   }
 
   /**
-   * Initialize Gun instance
+   * Initialize Gun instance (client mode - connects to relay)
    */
   async init(options = {}) {
     const gunOptions = {
-      peers: this.config.peers,
-      localStorage: this.config.localStorage,
-      radisk: this.config.radisk,
-      axe: false, // Disable multicast for cleaner operation
+      peers: options.peers || this.config.peers || [],
+      localStorage: false,
+      radisk: false,
+      axe: false,
+      multicast: false,
       ...options
     };
 

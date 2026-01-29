@@ -1,6 +1,6 @@
 {
   "name": "clawdbot-vinculum",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Shared consciousness between Clawdbot instances using Gun.js P2P sync",
   "main": "scripts/index.js",
   "bin": {

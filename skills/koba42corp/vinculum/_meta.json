@@ -3,9 +3,15 @@
   "slug": "vinculum",
   "displayName": "Vinculum",
   "latest": {
-    "version": "1.0.0",
-    "publishedAt": 1769696088913,
-    "commit": "https://github.com/clawdbot/skills/commit/abbe48cf622196337bd87d841530353f9bbecafb"
+    "version": "1.1.1",
+    "publishedAt": 1769701465911,
+    "commit": null
   },
-  "history": []
+  "history": [
+    {
+      "version": "1.0.0",
+      "publishedAt": 1769696088913,
+      "commit": "https://github.com/clawdbot/skills/commit/abbe48cf622196337bd87d841530353f9bbecafb"
+    }
+  ]
 }
