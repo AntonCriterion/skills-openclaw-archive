@@ -267,45 +267,6 @@ gcloud monitoring metrics-scopes describe projects/PROJECT_ID
 
 ---
 
-## Jake's GCP Setup
-
-### Projects
-
-| Project ID | Purpose | Services |
-|------------|---------|----------|
-| `jakeortega-nl` | Portfolio website | Firebase Hosting |
-| `dutch-defend-app` | Dutch Defend app | Firebase Hosting |
-| `n8n-server-482722` | n8n automation | Compute Engine VM |
-
-### Firebase Sites
-
-```bash
-# Portfolio - deploy
-firebase deploy --only hosting --project jakeortega-nl
-
-# Dutch Defend - deploy
-firebase deploy --only hosting --project dutch-defend-app
-```
-
-### n8n VM (Compute Engine)
-
-```bash
-# SSH into n8n server
-gcloud compute ssh n8n-server-vm --zone us-central1-c --project n8n-server-482722
-
-# Check status
-gcloud compute instances describe n8n-server-vm --zone us-central1-c --project n8n-server-482722 --format="value(status)"
-
-# Start/Stop
-gcloud compute instances start n8n-server-vm --zone us-central1-c --project n8n-server-482722
-gcloud compute instances stop n8n-server-vm --zone us-central1-c --project n8n-server-482722
-
-# View serial console (boot logs)
-gcloud compute instances get-serial-port-output n8n-server-vm --zone us-central1-c --project n8n-server-482722
-```
-
----
-
 ## Billing & Cost Monitoring
 
 ### View Current Costs
