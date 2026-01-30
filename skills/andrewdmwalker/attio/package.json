@@ -1,0 +1,34 @@
+{
+  "name": "attio",
+  "version": "1.2.0",
+  "description": "Enhanced Attio CRM integration with batch operations, improved error handling, data validation, enrichment functions, and robust task management. Use when working with large volumes of CRM data, requiring advanced error handling, or needing comprehensive data validation.",
+  "main": "scripts/attio",
+  "scripts": {
+    "test": "echo \"Tests would go here\" && exit 0"
+  },
+  "keywords": [
+    "crm",
+    "attio",
+    "sales",
+    "prospecting",
+    "enrichment",
+    "automation"
+  ],
+  "author": "Gameye Sales Team",
+  "license": "MIT",
+  "dependencies": {
+    "jq": "required for JSON processing"
+  },
+  "clawdhub": {
+    "skill": {
+      "name": "attio",
+      "version": "1.2.0",
+      "description": "Enhanced Attio CRM integration with batch operations, improved error handling, data validation, enrichment functions, and robust task management.",
+      "category": "crm",
+      "tags": ["crm", "sales", "prospecting", "enrichment", "automation"],
+      "requirements": {
+        "env": ["ATTIO_API_KEY"]
+      }
+    }
+  }
+}
