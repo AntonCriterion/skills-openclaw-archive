@@ -1,0 +1,11 @@
+{
+  "owner": "kesslerio",
+  "slug": "campaign-orchestrator",
+  "displayName": "Campaign Orchestrator",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1769838051934,
+    "commit": null
+  },
+  "history": []
+}
