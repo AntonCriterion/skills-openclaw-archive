@@ -1,0 +1,11 @@
+{
+  "owner": "salen-project",
+  "slug": "finance-tracker",
+  "displayName": "Finance Tracker",
+  "latest": {
+    "version": "1.0.1",
+    "publishedAt": 1769863482457,
+    "commit": null
+  },
+  "history": []
+}
