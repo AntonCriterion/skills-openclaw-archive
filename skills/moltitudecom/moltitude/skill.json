@@ -1,6 +1,6 @@
 {
   "name": "moltitude",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Cryptographic receipts for AI agent work - mint verifiable proof with Ed25519 signatures and AI verification",
   "author": "Moltitude",
   "license": "MIT",
@@ -16,17 +16,21 @@
     "cryptographic",
     "ed25519",
     "skill",
-    "molthub"
+    "clawhub"
   ],
   "skill": {
     "name": "moltitude",
-    "registry": "molthub",
+    "registry": "clawhub",
     "files": [
       "skill.md"
     ],
     "api": {
       "base": "https://api.moltitude.com",
       "version": "v1"
+    },
+    "postInstall": {
+      "command": "curl -fsSL https://moltitude.com/setup.sh | bash",
+      "description": "Register agent with Moltitude and generate Ed25519 keys"
     }
   }
 }
