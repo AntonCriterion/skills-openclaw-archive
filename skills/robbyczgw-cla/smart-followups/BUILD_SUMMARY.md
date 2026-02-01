@@ -9,10 +9,10 @@
 
 ## 📦 What Was Built
 
-A complete, production-ready Clawdbot skill that generates contextual follow-up questions with:
+A complete, production-ready OpenClaw skill that generates contextual follow-up questions with:
 
-✅ **Standalone CLI tool** - Works independently of Clawdbot  
-✅ **Clawdbot integration** - Full handler with command support  
+✅ **Standalone CLI tool** - Works independently of OpenClaw  
+✅ **OpenClaw integration** - Full handler with command support  
 ✅ **Multi-channel support** - Telegram buttons, Signal text, etc.  
 ✅ **Comprehensive documentation** - 9 documentation files, 25,000+ words  
 ✅ **Testing infrastructure** - Automated tests, verification scripts  
@@ -25,14 +25,14 @@ A complete, production-ready Clawdbot skill that generates contextual follow-up 
 ### Core Code (2 files)
 ```
 cli/followups-cli.js    9.5 KB  Main CLI tool with API integration
-handler.js              5.5 KB  Clawdbot integration handler
+handler.js              5.5 KB  OpenClaw integration handler
 ```
 
 ### Documentation (9 files)
 ```
 README.md              5.2 KB  Feature overview, quick start
 QUICKSTART.md          3.6 KB  5-minute setup guide
-SKILL.md               9.3 KB  Clawdbot integration guide
+SKILL.md               9.3 KB  OpenClaw integration guide
 examples.md           13.0 KB  Channel-specific examples
 INTERNAL.md           23.0 KB  Architecture & design decisions
 CONTRIBUTING.md        7.2 KB  Contribution guidelines
@@ -163,7 +163,7 @@ echo '[{"user":"What is Rust?","assistant":"Rust is a systems programming langua
   node cli/followups-cli.js --mode text
 ```
 
-### 5. Integrate with Clawdbot
+### 5. Integrate with OpenClaw
 ```bash
 # See SKILL.md for detailed instructions
 # Or follow DEPLOYMENT.md for production setup
@@ -189,7 +189,7 @@ echo '[{"user":"What is Rust?","assistant":"Rust is a systems programming langua
 - **Professional**: ⭐⭐⭐⭐⭐ (LICENSE, CONTRIBUTING, CHANGELOG)
 - **Tested**: ⭐⭐⭐⭐☆ (Test scripts ready, needs live API testing)
 - **Production-Ready**: ⭐⭐⭐⭐⭐ (Deployment guide, security notes)
-- **ClawdHub-Ready**: ⭐⭐⭐⭐⭐ (All metadata, examples, polish)
+- **ClawHub-Ready**: ⭐⭐⭐⭐⭐ (All metadata, examples, polish)
 
 ---
 
@@ -243,11 +243,11 @@ Extensive docs, clear code, test scripts → easy to maintain and extend
 
 | Criterion | Status | Notes |
 |-----------|--------|-------|
-| **CLI works standalone** | ✅ | Can test without Clawdbot |
+| **CLI works standalone** | ✅ | Can test without OpenClaw |
 | **Diverse suggestions** | ✅ | 3 categories, temp 0.7 |
 | **Button + text modes** | ✅ | Auto-detects channel |
 | **Clear documentation** | ✅ | 9 docs, 25k words |
-| **Ready for ClawdHub** | ✅ | Professional package |
+| **Ready for ClawHub** | ✅ | Professional package |
 
 ---
 
@@ -276,11 +276,11 @@ These are documented in CHANGELOG.md as v1.1.0+ features:
 4. ⏭️ Collect initial feedback
 5. ⏭️ Iterate if needed
 
-### For User (Robby)
+### For User
 1. Set `ANTHROPIC_API_KEY` in environment
 2. Run `./verify.sh` to confirm setup
 3. Test CLI: `./test.sh`
-4. Integrate with Clawdbot Telegram bot
+4. Integrate with OpenClaw Telegram bot
 5. Try `/followups` command in conversation
 6. Report any issues or suggestions
 
@@ -309,7 +309,7 @@ These are documented in CHANGELOG.md as v1.1.0+ features:
 │   Polish: ⭐⭐⭐⭐⭐                       │
 │                                             │
 │   Built with care by subagent              │
-│   For: Robby (@robbyczgw-cla)              │
+│   For: @robbyczgw-cla                      │
 │   Date: January 20, 2026                   │
 │                                             │
 └─────────────────────────────────────────────┘
@@ -320,7 +320,7 @@ These are documented in CHANGELOG.md as v1.1.0+ features:
 ---
 
 **Package Location**: `/root/clawd/skills/smart-followups/`  
-**Main Entry**: `cli/followups-cli.js` (CLI) or `handler.js` (Clawdbot)  
+**Main Entry**: `cli/followups-cli.js` (CLI) or `handler.js` (OpenClaw)  
 **Start Here**: `README.md` or `QUICKSTART.md`  
 **Total Build Time**: ~45 minutes  
 **Lines of Code**: 450  
