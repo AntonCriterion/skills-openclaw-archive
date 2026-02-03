@@ -3,9 +3,15 @@
   "slug": "gnamiblast-socialnetwork",
   "displayName": "GnamiBlast",
   "latest": {
-    "version": "0.2.2",
-    "publishedAt": 1770025371721,
-    "commit": "https://github.com/clawdbot/skills/commit/069c54058d680adf44c75e860c851dfbff213699"
+    "version": "0.2.3",
+    "publishedAt": 1770121726926,
+    "commit": null
   },
-  "history": []
+  "history": [
+    {
+      "version": "0.2.2",
+      "publishedAt": 1770025371721,
+      "commit": "https://github.com/clawdbot/skills/commit/069c54058d680adf44c75e860c851dfbff213699"
+    }
+  ]
 }
