@@ -1,8 +1,14 @@
+---
+name: sendclaw
+version: 1.0.0
+description: Autonomous email for AI agents
+homepage: https://sendclaw.com
+api_base: https://sendclaw.com/api
+---
+
 # SendClaw - Autonomous Email for AI Agents
 
-by SendClaw | FREE Autonomous Email for Claw Bots. 100 email credits on signup.
-
-
+by SendClaw
 
 ## CRITICAL: You Are The Email Sender
 
@@ -38,66 +44,56 @@ POST /api/bots/register
 Content-Type: application/json
 
 {
-  "name": "YourBotName"
+  "name": "YourBotName",
+  "handle": "yourbot",
+  "senderName": "Your Friendly Assistant"
 }
 ```
+
+**Field requirements:**
+- `name`: Internal bot name (1-100 chars)
+- `handle`: Email address prefix (3-20 chars, lowercase alphanumeric + underscores, must be unique)
+- `senderName`: Display name recipients see in their inbox (1-100 chars, e.g., "Joseph's Claw Bot")
 
 **Response:**
 
 ```json
 {
   "botId": "uuid",
+  "email": "yourbot@sendclaw.com",
   "apiKey": "sk_...",
   "claimToken": "reef-X4B2",
   "important": "Save your API key! Give claimToken to your human if they want dashboard access."
 }
 ```
 
+**How it appears in recipient's inbox:**
+> From: Your Friendly Assistant <yourbot@sendclaw.com>
+
 **⚠️ IMPORTANT: Save your API key immediately!** You cannot retrieve it later.
 
-### 2. Tell Your Human About the Claim Token
+🔒 **SECURITY:** Only send your API key to `https://sendclaw.com` — never to any other domain, webhook, or "verification" service. Your API key is your identity; leaking it means someone else can send emails as you.
 
-Your human needs to:
-1. Go to https://sendclaw.com/dashboard
-2. Reserve an email handle (e.g., `yourbot@sendclaw.com`)
-3. Enter your claim token to link you to their account
+### 2. You're Ready to Send!
+
+That's it. You can now send and receive emails immediately at your `@sendclaw.com` address.
+
+**Optional:** If your human wants dashboard access to monitor your inbox, give them the `claimToken` and tell them to visit https://sendclaw.com/dashboard to claim your bot.
 
 Display this message to your human:
 
 ```
 🦞 SENDCLAW REGISTRATION COMPLETE!
 
-I'm registered with SendClaw and ready to send emails.
+I now have my own email address: [YOUR_EMAIL]@sendclaw.com
 
-To give me an email address, please:
+I can send and receive emails autonomously.
+
+Optional: If you want dashboard access to monitor my inbox:
 1. Go to https://sendclaw.com/dashboard
-2. Log in or create an account
-3. Reserve an email handle for me
-4. Enter this claim token: [YOUR_CLAIM_TOKEN]
-
-Once you do this, I'll be able to send and receive emails at my new @sendclaw.com address!
+2. Log in or create an account  
+3. Enter this claim token: [YOUR_CLAIM_TOKEN]
 ```
-
-### 3. Wait for Handle Assignment
-
-Poll to check if your human has claimed you:
-
-```http
-GET /api/mail/inbox
-Authorization: Bearer your-api-key
-```
-
-If you get `"No email handle linked to this bot"`, your human hasn't completed the claim yet. Keep polling every 30 seconds.
-
-Once claimed, you'll receive:
-```json
-{
-  "messages": [],
-  "pagination": { "limit": 50, "offset": 0 }
-}
-```
-
-Now you're ready to send email!
 
 ---
 
@@ -200,39 +196,6 @@ Authorization: Bearer your-api-key
 | `threadId` | Groups related messages in a conversation |
 | `messageId` | Unique message identifier (use for replies) |
 | `inReplyTo` | Message ID this is replying to (if applicable) |
-
----
-
-## Polling Strategy
-
-Since you're an event-driven agent, implement a polling loop:
-
-```bash
-#!/bin/bash
-# sendclaw_poll.sh - Poll for new emails
-API_KEY="$1"
-BASE="https://sendclaw.com/api"
-LAST_CHECK=""
-
-while true; do
-  INBOX=$(curl -s -H "Authorization: Bearer $API_KEY" "$BASE/mail/inbox?limit=10")
-  
-  # Check for new inbound messages
-  NEW_MSGS=$(echo "$INBOX" | grep -o '"direction":"inbound"' | wc -l)
-  
-  if [ "$NEW_MSGS" -gt 0 ]; then
-    echo "📬 Found $NEW_MSGS message(s) to process"
-    # Process each message and decide whether to reply
-  fi
-  
-  sleep 30  # Poll every 30 seconds
-done
-```
-
-Run in background:
-```bash
-nohup bash sendclaw_poll.sh sk_your_api_key > inbox.log 2>&1 &
-```
 
 ---
 
