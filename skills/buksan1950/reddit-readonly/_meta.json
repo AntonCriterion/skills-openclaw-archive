@@ -1,0 +1,11 @@
+{
+  "owner": "buksan1950",
+  "slug": "reddit-readonly",
+  "displayName": "Reddit (read only - no auth)",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1770050502449,
+    "commit": null
+  },
+  "history": []
+}
